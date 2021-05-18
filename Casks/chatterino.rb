@@ -1,16 +1,17 @@
 cask "chatterino" do
-  version "2.2.3-beta2"
-  sha256 "ce5a10067ee9d04f348349fca2bd039094d4cc6ae27747d80deaac1286942f29"
+  version "2.3.1"
+  sha256 "0622d1c22bc95ad5ae35d329015afa35fc8ca3b0bb45d35dad19c64829ea7cb3"
 
-  url "https://chatterino.com/download/#{version}/Chatterino.dmg"
+  url "https://chatterino.fra1.digitaloceanspaces.com/bin/#{version}/Chatterino.dmg",
+      verified: "chatterino.fra1.digitaloceanspaces.com/"
   name "Chatterino"
   desc "Chat client for https://twitch.tv"
   homepage "https://chatterino.com/"
 
   livecheck do
-    url :homepage
+    url "https://notitia.chatterino.com/version/chatterino/macos/stable"
     strategy :page_match
-    regex(%r{span>macOS \(v(.*)\)</span}i)
+    regex(/"version"\s*:\s*"(\d+(?:\.\d+)*(-\w+\d+)?)"/i)
   end
 
   app "chatterino.app"

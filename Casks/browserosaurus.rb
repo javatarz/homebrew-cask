@@ -1,12 +1,12 @@
 cask "browserosaurus" do
-  version "14.0.1"
+  version "14.1.2"
 
   if Hardware::CPU.intel?
-    sha256 "9e3bb07aa595f1a0f3549d5df667f402e07d1595b7b8fa3d76f0f74cc20934a1"
+    sha256 "1cf01c5cfe9a49013b777bee0bbc8a2ff1099bd4a252b25b3341dbb24a2c796c"
     url "https://github.com/will-stone/browserosaurus/releases/download/v#{version}/Browserosaurus-darwin-x64-#{version}.zip",
         verified: "github.com/will-stone/browserosaurus/"
   else
-    sha256 "d6feb17ef506ca79e188a49af157af31fc71150d14e1b36bf6a84a21bb81282d"
+    sha256 "7a7ed77fcc6aba7074542a427c8479d5d86334df1825b7670d1a699f62275284"
     url "https://github.com/will-stone/browserosaurus/releases/download/v#{version}/Browserosaurus-darwin-arm64-#{version}.zip",
         verified: "github.com/will-stone/browserosaurus/"
   end

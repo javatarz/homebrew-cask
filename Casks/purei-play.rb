@@ -1,5 +1,5 @@
 cask "purei-play" do
-  version "6ce95b5f"
+  version "fe8d145d"
   sha256 :no_check
 
   url "https://s3.us-east-2.amazonaws.com/playbuilds/#{version}/Play.dmg",

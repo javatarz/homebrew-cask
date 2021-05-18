@@ -1,18 +1,28 @@
 cask "appcode" do
-  version "2020.3.4,203.7717.57"
+  version "2021.1.1,211.7142.51"
 
   if Hardware::CPU.intel?
-    sha256 "dcb50aef60debcc58436aaea5df7c92282dc4c4924df372a00b7cbcf95447464"
+    sha256 "74f2356db8325cb8d804d4e8fc2647a398132badb054117b06daed8285a49742"
+
     url "https://download.jetbrains.com/objc/AppCode-#{version.before_comma}.dmg"
   else
-    sha256 "99b3b5aed04179e5d34f377602a6f99225136cbd97bac03d53366e497a68b67f"
+    sha256 "e57b21dc8fc06dfb401c976716576a1a045a48d363ed0eac69d5134f30fe7a47"
+
     url "https://download.jetbrains.com/objc/AppCode-#{version.before_comma}-aarch64.dmg"
   end
 
-  appcast "https://data.services.jetbrains.com/products/releases?code=AC&latest=true&type=release"
   name "AppCode"
   desc "IDE for Swift, Objective-C, C, and C++ development"
   homepage "https://www.jetbrains.com/objc/"
+
+  livecheck do
+    url "https://data.services.jetbrains.com/products/releases?code=AC&latest=true&type=release"
+    strategy :page_match do |page|
+      version = page[/"version"\s*:\s*"(\d+(?:\.\d+)*)/i, 1]
+      build = page[/"build"\s*:\s*"(\d+(?:\.\d+)*)/i, 1]
+      "#{version},#{build}"
+    end
+  end
 
   auto_updates true
 

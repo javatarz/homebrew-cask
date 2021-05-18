@@ -1,6 +1,6 @@
 cask "alfaview" do
-  version "8.15.0"
-  sha256 "0093e1f76f50b075a005c2cbb15ca78b5c69fb3e1b37d5d46e08fad2b7e70d60"
+  version "8.18.1"
+  sha256 "0263c769a8c183b486a4eb1dbc16833a172abbfbb19b69ed9e34238d1ea05fa7"
 
   url "https://assets.alfaview.com/stable/mac/alfaview-mac-production-#{version}.dmg"
   name "Alfaview"
@@ -9,9 +9,10 @@ cask "alfaview" do
 
   livecheck do
     url "https://production-alfaview-assets.alfaview.com/stable/mac/version.info"
-    strategy :page_match
     regex(/alfaview-mac-production-(\d+(?:\.\d+)*)\.dmg/i)
   end
+
+  depends_on macos: ">= :high_sierra"
 
   app "alfaview.app"
 

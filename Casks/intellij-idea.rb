@@ -1,17 +1,26 @@
 cask "intellij-idea" do
-  version "2021.1"
+  version "2021.1.1,211.7142.45"
 
   if Hardware::CPU.intel?
-    sha256 "76e1ddef6054cbffd3bc5a2068298fdb5a14ab1fbfd8499148eb8221e47a5397"
-    url "https://download.jetbrains.com/idea/ideaIU-#{version}.dmg"
+    sha256 "ec43a810329b619b5d52aeda3e6240a698b8df137b2c39c1babd1010d81e5555"
+    url "https://download.jetbrains.com/idea/ideaIU-#{version.before_comma}.dmg"
   else
-    sha256 "689b9e3253d80e922fccb8fc3aa230c7efcc4afade1b74f93c0272d34451b7ca"
-    url "https://download.jetbrains.com/idea/ideaIU-#{version}-aarch64.dmg"
+    sha256 "5e4389964c8cca7839e3c97202d1c7047ae50bff276884a1d211a2dd5acbd3c8"
+    url "https://download.jetbrains.com/idea/ideaIU-#{version.before_comma}-aarch64.dmg"
   end
 
-  appcast "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release"
   name "IntelliJ IDEA Ultimate"
+  desc "Java IDE by JetBrains"
   homepage "https://www.jetbrains.com/idea/"
+
+  livecheck do
+    url "https://data.services.jetbrains.com/products/releases?code=IIU&latest=true&type=release"
+    strategy :page_match do |page|
+      version = page.match(/"version":"(\d+(?:\.\d+)*)/i)
+      build = page.match(/"build":"(\d+(?:\.\d+)*)/i)
+      "#{version[1]},#{build[1]}"
+    end
+  end
 
   auto_updates true
 

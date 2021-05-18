@@ -1,6 +1,6 @@
 cask "electerm" do
-  version "1.12.9"
-  sha256 "4fed71664f73644ec9c90f4f3532f68626ac83cf7eddb757f4dae55de2bee00a"
+  version "1.12.24"
+  sha256 "a40b236370f5e9e10db51bc4f5837a67609392e6f4ed2db824c273fe3bf252bc"
 
   url "https://github.com/electerm/electerm/releases/download/v#{version}/electerm-#{version}-mac.dmg"
   name "electerm"

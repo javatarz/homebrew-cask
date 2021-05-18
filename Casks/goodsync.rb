@@ -1,6 +1,6 @@
 cask "goodsync" do
-  version "11.6.1"
-  sha256 "8fe5ed43c98741b0516fc3cf21298f2c6a9b65733d2ded5704de8a7a44f49dbc"
+  version "11.6.6"
+  sha256 "9d84a281f6d002c502cd27195f0b62afcd0ddfc2b9f6d4fd56e1b8979747cb8f"
 
   url "https://www.goodsync.com/download/goodsync-v#{version.major}-mac.dmg"
   name "GoodSync"
@@ -9,8 +9,7 @@ cask "goodsync" do
 
   livecheck do
     url "https://www.goodsync.com/download?os=macos"
-    strategy :page_match
-    regex(/GoodSync\ for\ Mac\ v\ (\d+(?:\.\d+)*)/i)
+    regex(/GoodSync\s+for\s+Mac\s+v?\s*(\d+(?:\.\d+)+)/i)
   end
 
   depends_on macos: ">= :yosemite"

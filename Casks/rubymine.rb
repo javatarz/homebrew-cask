@@ -1,12 +1,26 @@
 cask "rubymine" do
-  version "2021.1,211.6693.118"
-  sha256 "553a3e0b3e11f42def5490bff66d66289e580afd892ad57755b3a2b7079009e9"
+  version "2021.1.1,211.7142.41"
 
-  url "https://download.jetbrains.com/ruby/RubyMine-#{version.before_comma}.dmg"
-  appcast "https://data.services.jetbrains.com/products/releases?code=RM&latest=true&type=release"
+  if Hardware::CPU.intel?
+    sha256 "dab2fdf132981de92818ebdc235874ee507c1e58eb68574f42791b2c0927edef"
+    url "https://download.jetbrains.com/ruby/RubyMine-#{version.before_comma}.dmg"
+  else
+    sha256 "0cd0d267d54e1f8ed14595a055fe8041a811d42fa4ae3b1d7f091278042741ae"
+    url "https://download.jetbrains.com/ruby/RubyMine-#{version.before_comma}-aarch64.dmg"
+  end
+
   name "RubyMine"
   desc "Ruby on Rails IDE"
   homepage "https://www.jetbrains.com/ruby/"
+
+  livecheck do
+    url "https://data.services.jetbrains.com/products/releases?code=RM&latest=true&type=release"
+    strategy :page_match do |page|
+      version = page.match(/"version":"(\d+(?:\.\d+)*)/i)
+      build = page.match(/"build":"(\d+(?:\.\d+)*)/i)
+      "#{version[1]},#{build[1]}"
+    end
+  end
 
   auto_updates true
 

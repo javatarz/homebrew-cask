@@ -1,6 +1,6 @@
 cask "raze" do
-  version "1.0.0"
-  sha256 "3347fe53189b4aa70bec0070459608035bb30e468cf32d88ff523ba8363dadeb"
+  version "1.0.3"
+  sha256 "eb64d75e99ef7f81e106600c1a82aee35bc0fac66857b0b384ec24c5bc949008"
 
   url "https://github.com/coelckers/Raze/releases/download/#{version}/raze-macos-#{version}.zip"
   name "Raze"
@@ -9,8 +9,7 @@ cask "raze" do
 
   livecheck do
     url :url
-    strategy :git
-    regex(/^(\d+(?:\.\d+)*)/)
+    regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
   app "Raze.app"

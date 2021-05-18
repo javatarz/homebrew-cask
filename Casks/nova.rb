@@ -1,6 +1,6 @@
 cask "nova" do
-  version "5.1"
-  sha256 "affdf57c49c2c8f937cd3f841c9bd8ee65fe3fa70657d2efc1d46d66c78c2cd1"
+  version "6.2"
+  sha256 "77b8591065a8f596a260a88f76a8bc1757ce71272723c4bf8fbd466e2dcade2d"
 
   url "https://download-cdn.panic.com/nova/Nova%20#{version}.zip",
       verified: "https://download-cdn.panic.com/nova/"
@@ -9,9 +9,8 @@ cask "nova" do
   homepage "https://nova.app/"
 
   livecheck do
-    url "https://download-cdn.panic.com/nova/"
-    strategy :page_match
-    regex(/nova\s(\d+(?:\.\d+)*)\.zip/i)
+    url :homepage
+    regex(%r{href=.*?/Nova(?:\s*|%20)?(\d+(?:\.\d+)*)\.zip}i)
   end
 
   auto_updates true

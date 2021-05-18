@@ -1,6 +1,6 @@
 cask "chromium" do
-  version "871199"
-  sha256 "9cdedcdde89cf652bde85128c8f65a5a7a3f118f8e3941cc0d1f213bf6baf4df"
+  version "883349"
+  sha256 "2988c7f99aef77f8f2ae0161b2619697540667aa4edeb8277232880cf52a129f"
 
   url "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/#{version}/chrome-mac.zip",
       verified: "commondatastorage.googleapis.com/chromium-browser-snapshots/Mac/"
@@ -26,7 +26,7 @@ cask "chromium" do
   preflight do
     IO.write shimscript, <<~EOS
       #!/bin/sh
-      '#{appdir}/Chromium.app/Contents/MacOS/Chromium' "$@"
+      exec '#{appdir}/Chromium.app/Contents/MacOS/Chromium' "$@"
     EOS
   end
 
